@@ -5,6 +5,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -25,7 +26,7 @@ public class Product {
     private int price;
     
     @ElementCollection
-    private Set<String> eans;
+    private Set<String> eans = new HashSet<>();
     
     public String getSku() {
         return sku;

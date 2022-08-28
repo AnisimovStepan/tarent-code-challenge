@@ -1,6 +1,5 @@
 package de.tarent.challenge.store.products;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +8,7 @@ import java.util.List;
 public class ProductService {
 
     private final ProductCatalogRepository productCatalogRepository;
-
-    @Autowired
+    
     public ProductService(ProductCatalogRepository productCatalogRepository) {
         this.productCatalogRepository = productCatalogRepository;
     }
@@ -21,6 +19,14 @@ public class ProductService {
 
     public Product getProduct(String sku) {
         return productCatalogRepository.findBySku(sku);
+    }
+    
+    public Product addProduct(Product product) {
+        return productCatalogRepository.save(product);
+    }
+    
+    public Product updateProduct(Product product) {
+        return productCatalogRepository.save(product);
     }
     
 }
