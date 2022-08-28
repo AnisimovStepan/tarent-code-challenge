@@ -25,6 +25,8 @@ public class Product {
     
     private long price;
     
+    private boolean available = true;
+    
     @ElementCollection
     private Set<String> eans = new HashSet<>();
     
@@ -60,4 +62,11 @@ public class Product {
         this.price = price;
     }
     
+    public boolean isAvailable() {
+        return available;
+    }
+    
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 }

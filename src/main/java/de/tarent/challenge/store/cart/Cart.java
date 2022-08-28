@@ -20,6 +20,8 @@ public class Cart {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> items = new LinkedList<>();
     
+    private boolean checkout = false;
+    
     public List<CartItem> getItems() {
         return items;
     }
@@ -28,8 +30,20 @@ public class Cart {
         this.items = items;
     }
     
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public Long getId() {
         return id;
+    }
+    
+    public boolean isCheckout() {
+        return checkout;
+    }
+    
+    public void setCheckout(boolean checkout) {
+        this.checkout = checkout;
     }
     
     public long getTotal() {

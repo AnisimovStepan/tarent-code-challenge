@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @Service
 public class CartService {
-
+    
+    private static final String CART_WITH_ID_IS_CHECKED_OUT_TEMPLATE = "Cart with id \"%d\" is checked out. Changes are blocked.";
     private final CartRepository cartRepository;
     private final ProductService productService;
     
@@ -38,10 +39,11 @@ public class CartService {
         List<CartItem> cartItemsWithExistedProducts = new ArrayList<>();
         cart.getItems().forEach(cartItem -> {
             Product product = productService.getProduct(cartItem.getProduct().getSku());
-            Optional.ofNullable(product).ifPresent(prod -> {
+            if (product != null && product.isAvailable()) {
                 cartItem.setProduct(product);
                 cartItemsWithExistedProducts.add(cartItem);
-            });
+                
+            }
         });
         
         return cartItemsWithExistedProducts;
@@ -49,6 +51,10 @@ public class CartService {
     
     @Transactional
     public Cart updateCart(Cart cart) {
+        if (getCart(cart.getId()).isCheckout()) {
+            throw new RuntimeException(String.format(CART_WITH_ID_IS_CHECKED_OUT_TEMPLATE, cart.getId()));
+        }
+        
         return cartRepository.save(cart);
     }
     

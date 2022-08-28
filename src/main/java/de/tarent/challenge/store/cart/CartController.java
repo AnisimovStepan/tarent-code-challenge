@@ -47,6 +47,8 @@ public class CartController {
         Optional.ofNullable(cartService.getCart(id))
                 .orElseThrow(() -> new EntityNotFoundException(cartValidator.notFoundMessage(id)));
     
+        cart.setId(id);
+    
         cartValidator.validate(cart);
         return cartService.updateCart(cart);
     }

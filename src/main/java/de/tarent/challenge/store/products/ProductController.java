@@ -47,6 +47,8 @@ public class ProductController {
         Optional.ofNullable(productService.getProduct(sku))
                 .orElseThrow(() -> new EntityNotFoundException(productValidator.notFoundMessage(sku)));
     
+        product.setSku(sku);
+        
         productValidator.validate(product);
         return productService.updateProduct(product);
     }
