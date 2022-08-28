@@ -7,26 +7,26 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    private final ProductCatalogRepository productCatalogRepository;
+    private final ProductRepository productRepository;
     
-    public ProductService(ProductCatalogRepository productCatalogRepository) {
-        this.productCatalogRepository = productCatalogRepository;
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     public List<Product> getProducts() {
-        return productCatalogRepository.findAll();
+        return productRepository.findAll();
     }
 
     public Product getProduct(String sku) {
-        return productCatalogRepository.findBySku(sku);
+        return productRepository.findBySku(sku);
     }
     
     public Product addProduct(Product product) {
-        return productCatalogRepository.save(product);
+        return productRepository.save(product);
     }
     
     public Product updateProduct(Product product) {
-        return productCatalogRepository.save(product);
+        return productRepository.save(product);
     }
     
 }

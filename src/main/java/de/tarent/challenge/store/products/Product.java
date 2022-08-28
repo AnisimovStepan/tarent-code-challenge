@@ -23,7 +23,7 @@ public class Product {
     @Column(nullable = false)
     private String name;
     
-    private int price;
+    private long price;
     
     @ElementCollection
     private Set<String> eans = new HashSet<>();
@@ -52,11 +52,11 @@ public class Product {
         this.eans = eans;
     }
     
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
     
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
     

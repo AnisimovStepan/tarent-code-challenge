@@ -7,8 +7,8 @@ import java.util.StringJoiner;
 @Service
 public class ProductValidator {
     
-    private static final String PRODUCT_WITH_SKU_NOT_FOUND_TEMPLATE = "Product with sku \"%s\" not found.";
-    private static final String PRODUCT_WITH_SKU_ALREADY_EXISTS_TEMPLATE = "Product with sku \"%s\" already exists.";
+    private static final String PRODUCT_WITH_SKU_NOT_FOUND_TEMPLATE = "Product with sku \"%s\" is not found.";
+    private static final String PRODUCT_WITH_SKU_ALREADY_EXISTS_TEMPLATE = "Product with sku \"%s\" is already exists.";
     private static final String PRODUCT_NAME_IS_EMPTY = "Product name is empty.";
     private static final String PRODUCT_HAVE_NOT_EANS = "Product have not eans.";
     private static final String PRODUCT_HAVE_EMPTY_EANS = "Product have empty's eans.";
