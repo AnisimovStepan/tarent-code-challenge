@@ -1,13 +1,10 @@
 package de.tarent.challenge.store.products;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Sets;
-
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Objects;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -19,57 +16,47 @@ public class Product {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String sku;
-
+    
+    @Column(nullable = false)
     private String name;
-
+    
+    private int price;
+    
     @ElementCollection
     private Set<String> eans;
-
-    private Product() {
-    }
-
-    public Product(String sku, String name, Set<String> eans) {
-        this.sku = sku;
-        this.name = name;
-        this.eans = eans;
-    }
-
+    
     public String getSku() {
         return sku;
     }
-
+    
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+    
     public String getName() {
         return name;
     }
-
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public Set<String> getEans() {
-        return Sets.newHashSet(eans);
+        return eans;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id) &&
-                Objects.equals(sku, product.sku) &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(eans, product.eans);
+    
+    public void setEans(Set<String> eans) {
+        this.eans = eans;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, sku, name, eans);
+    
+    public int getPrice() {
+        return price;
     }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("sku", sku)
-                .add("name", name)
-                .add("eans", eans)
-                .toString();
+    
+    public void setPrice(int price) {
+        this.price = price;
     }
+    
 }
