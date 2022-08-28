@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class CartService {
     
-    private static final String CART_WITH_ID_IS_CHECKED_OUT_TEMPLATE = "Cart with id \"%d\" is checked out. Changes are blocked.";
+    public static final String CART_WITH_ID_IS_CHECKED_OUT_TEMPLATE = "Cart with id \"%d\" is checked out. Changes are blocked.";
     private final CartRepository cartRepository;
     private final ProductService productService;
     

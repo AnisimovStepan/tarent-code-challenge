@@ -46,7 +46,7 @@ public class Cart {
         this.checkout = checkout;
     }
     
-    public long getTotal() {
+    public long getTotalPrice() {
         return items.stream()
                 .mapToLong(item -> item.getQuantity() * item.getProduct().getPrice())
                 .sum();
